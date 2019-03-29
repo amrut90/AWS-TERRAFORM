@@ -1,6 +1,7 @@
 # create a simple EC2 instance
 # Fill blank space with your account credentials
 # EC2 instance ami is must be specified within region
+# Instance will launch within default VPC
 
 provider "aws" {
   access_key = "******************"
