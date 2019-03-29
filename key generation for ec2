@@ -1,0 +1,22 @@
+provider "aws" {
+  access_key = "******************"
+  secret_key = "*********************"
+  region     = "**************"
+}
+
+resource "tls_private_key" "ec2-key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "generated_key" {
+  key_name   = "generated_key"
+  public_key = "${tls_private_key.ec2-key.public_key_openssh}"
+}
+
+# this resource requires an existing user-supplied key pair.
+# This key pair's public key will be registered with AWS to allow logging-in to EC2 instances.
+resource "aws_key_pair" "existing-key" {
+  key_name   = "existing-key"
+  public_key = "ssh-rsa ****************" #existing public key data
+}
