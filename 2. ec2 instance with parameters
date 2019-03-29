@@ -1,4 +1,4 @@
-# create a simple EC2 instance
+# create a EC2 instance with parameters
 # Fill blank space with your account credentials
 # EC2 instance ami and key name is must be specified within region
 
