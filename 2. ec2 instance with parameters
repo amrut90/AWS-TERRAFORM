@@ -15,8 +15,19 @@ resource "aws_instance" "instance" {
   availability_zone ="**************"
   key_name = "****************"
   monitoring ="****" #true/false
+  security_groups = ["security-group"]
   tags {
        Name     = "practice"
        }
 }
- 
+
+# Define Security Group for Instance
+ resource "aws_security_group" "instance" {
+ name = "security-group"
+    ingress {
+         from_port = 22
+         to_port = 22
+          protocol = "tcp"
+          cidr_blocks = ["0.0.0.0/0"]
+             }
+}
